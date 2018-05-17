@@ -1,0 +1,54 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.services.tfbqueue.queue.tfb.aber.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TimeZoneServiceImplService" targetNamespace="http://soap.services.tfbqueue.queue.tfb.aber.org/">
+    <script type="text/javascript" charset="utf-8" id="zm-extension"/>
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.services.tfbqueue.queue.tfb.aber.org/" elementFormDefault="unqualified" targetNamespace="http://soap.services.tfbqueue.queue.tfb.aber.org/" version="1.0">
+            <xs:element name="TimeZoneResponse" type="tns:timeZoneResponse"/>
+            <xs:element name="getTimeZone" type="tns:getTimeZone"/>
+            <xs:element name="getTimeZoneResponse" type="tns:getTimeZoneResponse"/>
+            <xs:complexType name="getTimeZone">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="PhoneNumber" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTimeZoneResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="TimeZoneResponse" type="tns:timeZoneResponse"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="timeZoneResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="region" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getTimeZoneResponse">
+        <wsdl:part element="tns:getTimeZoneResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTimeZone">
+        <wsdl:part element="tns:getTimeZone" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="TimeZoneService">
+        <wsdl:operation name="getTimeZone">
+            <wsdl:input message="tns:getTimeZone" name="getTimeZone"></wsdl:input>
+            <wsdl:output message="tns:getTimeZoneResponse" name="getTimeZoneResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TimeZoneServiceImplServiceSoapBinding" type="tns:TimeZoneService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getTimeZone">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getTimeZone">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getTimeZoneResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TimeZoneServiceImplService">
+        <wsdl:port binding="tns:TimeZoneServiceImplServiceSoapBinding" name="TimeZoneServiceImplPort">
+            <soap:address location="http://localhost:8080/ws/TimeZoneService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
