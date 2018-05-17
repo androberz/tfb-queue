@@ -1,13 +1,13 @@
 package org.aber.tfb.queue.tfbqueue.model;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class Contact implements Serializable {
 
